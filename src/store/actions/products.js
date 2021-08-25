@@ -1,7 +1,7 @@
 import { GET_PRODUCTS } from "../type";
-import { get } from "Src/api/product";
+import { get } from "Src/api/products";
 
-export const getUsers = () => async (dispatch) => {
+export const getProducts = () => async (dispatch) => {
   try {
     const res = await get();
     dispatch({
