@@ -1,0 +1,15 @@
+import { GET_PRODUCTS } from "../type";
+import { get } from "Src/api/product";
+
+export const getUsers = () => async (dispatch) => {
+  try {
+    const res = await get();
+    dispatch({
+      type: GET_PRODUCTS,
+      data: res,
+    });
+    return Promise.resolve(res);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};

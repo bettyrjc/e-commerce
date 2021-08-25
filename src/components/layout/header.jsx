@@ -1,0 +1,27 @@
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import shoppingCar from "Src/assets/shoppingCar.png";
+const header = (props) => {
+  return (
+    <div className="h-24 w-full bg-blue-500 flex justify-between items-center text-white pl-4 sm:pl-4 md:px-8">
+      <Link href="/">
+        <a className="text-3xl font-bold text-white">MERU</a>
+      </Link>
+      <Link className="flex justify-between items-center w-24" href="/">
+        <a className="w-14 h-14 hover:bg-blue-700 p-2 rounded-full cursor-pointer relative">
+          <Image
+            src={shoppingCar}
+            alt="shoppingcart"
+            className="w-full h-full"
+          />
+          <div className="absolute top-0 right-0 bg-red-500 w-5 h-5 rounded-full">
+            <p className="flex item-center justify-center text-sm">1</p>
+          </div>
+        </a>
+      </Link>
+    </div>
+  );
+};
+
+export default header;

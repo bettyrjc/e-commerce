@@ -3,4 +3,7 @@
 @import "tailwindcss/utilities";
 
 @import './main.scss';
-$primary: #F4F4F4;
+
+.gradient{
+  @apply bg-gradient-to-r from-blue-200 via-blue-500 to-blue-700 h-full text-white
+}
