@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const card = ({ data }) => {
+const card = ({ data, setProductsInShoppingCar }) => {
   return (
     <div className="w-full h-auto bg-white shadow-md p-4 rounded-sm flex flex-col justify-between">
       <div>
@@ -19,7 +19,10 @@ const card = ({ data }) => {
         </div>
       </div>
 
-      <button className="primary-button-full btnTransitionHover">
+      <button
+        className="primary-button-full btnTransitionHover"
+        onClick={(e) => setProductsInShoppingCar(e, data)}
+      >
         Agregar
       </button>
     </div>

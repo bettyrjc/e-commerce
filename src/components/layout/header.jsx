@@ -2,7 +2,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import shoppingCar from "Src/assets/shoppingCar.png";
-const header = (props) => {
+const header = ({ shoppingCarInHeader = [] }) => {
+  const productsInCar =
+    process.browser && JSON.parse(localStorage.getItem("productsInCar"));
+
   return (
     <div className="h-24 w-full bg-blue-500 flex justify-between items-center text-white pl-4 sm:pl-4 md:px-8">
       <Link href="/">
@@ -16,7 +19,9 @@ const header = (props) => {
             className="w-full h-full"
           />
           <div className="absolute top-0 right-0 bg-red-500 w-5 h-5 rounded-full">
-            <p className="flex item-center justify-center text-sm">1</p>
+            <p className="flex item-center justify-center text-sm">
+              {productsInCar?.length ? productsInCar.length : "0" }
+            </p>
           </div>
         </a>
       </Link>

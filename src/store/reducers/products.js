@@ -1,7 +1,8 @@
-import { GET_PRODUCTS } from "../type";
+import { GET_PRODUCTS, SHOPPING_CAR } from "../type";
 
 const initialState = {
   products: [],
+  shoppingCar: [],
   loading: false,
   error: false,
 };
@@ -14,7 +15,12 @@ const userReducer = (state = initialState, action) => {
         products: action.data,
         loading: false,
       };
-
+    case SHOPPING_CAR:
+      return {
+        ...state,
+        shoppingCar:action.data,
+        loading: false,
+      };
     default:
       return state;
   }
