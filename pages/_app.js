@@ -1,7 +1,8 @@
 import { Provider } from "react-redux";
 import Head from "next/head";
 import store from "../src/store/reducers";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/tailwind.scss";
 
 function MyApp({ Component, pageProps }) {
@@ -10,7 +11,18 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>PRODUCTOS MERU</title>
         {/* <link rel="icon" href="/static/images/favicon.png" /> */}
-      </Head> 
+      </Head>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Component {...pageProps} />
     </Provider>
   );

@@ -1,7 +1,12 @@
 import { GET_PRODUCTS, SHOPPING_CAR } from "../type";
-
+const initialProps = {
+  name: "",
+  id: "",
+  price: "",
+  count: "",
+};
 const initialState = {
-  products: [],
+  products:[],
   shoppingCar: [],
   loading: false,
   error: false,

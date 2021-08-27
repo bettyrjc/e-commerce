@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getProducts, pushInShoppingCar } from "Src/store/actions/products";
-
+import { toast } from "react-toastify";
 import Main from "Components/Main";
 import Card from "Components/utils/card";
 
-const Home = ({ products, getProducts, pushInShoppingCar }) => {
+const Home = ({ products, getProducts }) => {
   const productsInLocal =
     process.browser && JSON.parse(localStorage.getItem("productsInCar"));
+
+  const productsList =
+    products?.products?.length > 0 &&
+    products.products.map((i) => ({ ...i, amount: 1 }));
+
   const [productsInCar, setProductsInCar] = useState(productsInLocal || []);
 
-  const productsList = products?.products?.length > 0 && products.products;
+  console.log("productsList,", productsList);
 
   useEffect(() => {
     getProducts();
@@ -26,17 +31,16 @@ const Home = ({ products, getProducts, pushInShoppingCar }) => {
         "productsInCar",
         JSON.stringify([...productsInCar, product])
       );
-
-      // pushInShoppingCar();
+      toast.success("🥰 Añadiendo al carrito");
+    } else {
+      toast.info("🤓 Ya tienes este producto en tu carrito");
     }
   };
-
-  console.log("productsInCar", productsInCar);
 
   return (
     <Main shoppingCarInHeader={productsInCar}>
       <div className="h-full sm:block md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-4 m-4 mx-8 ">
-        {products?.products?.length > 0
+        {productsList?.length > 0
           ? productsList.map((product, index) => (
               <Card
                 data={product}

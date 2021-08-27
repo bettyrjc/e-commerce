@@ -7,7 +7,7 @@ const header = ({ shoppingCarInHeader = [] }) => {
     process.browser && JSON.parse(localStorage.getItem("productsInCar"));
 
   return (
-    <div className="h-24 w-full bg-blue-500 flex justify-between items-center text-white pl-4 sm:pl-4 md:px-8">
+    <div className="h-24 w-full bg-blue-500 flex justify-between items-center text-white pl-4 sm:pl-4 md:px-8 ">
       <Link href="/">
         <a className="text-3xl font-bold text-white">MERU</a>
       </Link>

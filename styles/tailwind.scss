@@ -27,3 +27,9 @@
     @apply bg-gradient-to-r from-gray-300 to-gray-300 shadow-none;
   }
 }
+.container{
+  min-width: 100vw !important;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
