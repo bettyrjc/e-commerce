@@ -69,7 +69,6 @@ const ShoppingCar = ({ pushInShoppingCar }) => {
       confirmButtonText: "Sí",
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
-      console.log(result)
       if (result.isConfirmed) localStorage.clear();
       window.location.reload()
     });

@@ -15,8 +15,6 @@ const Home = ({ products, getProducts }) => {
 
   const [productsInCar, setProductsInCar] = useState(productsInLocal || []);
 
-  console.log("productsList,", productsList);
-
   useEffect(() => {
     getProducts();
   }, []);
