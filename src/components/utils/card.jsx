@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const card = ({ data, setProductsInShoppingCar }) => {
   return (
-    <div className="w-full h-auto bg-white shadow-md p-4 rounded-sm flex flex-col justify-between">
+    <div className="sm:mt-2 md:mt-0 w-full h-auto bg-white shadow-md p-4 rounded-sm flex flex-col justify-between">
       <div>
         <div className="p-4 h-34 w-ful">
           <img

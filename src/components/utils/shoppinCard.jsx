@@ -19,7 +19,7 @@ const shoppinCard = ({
         </div>
         <div className="w-full pb-4">
           <h2 className="text-base h-20 overflow-y-auto  mb-2">{data.name}</h2>
-          <div className="flex justify-between items-center">
+          <div className="">
             <div>
               <div className="flex">
                 <p className="mr-2">Precio unidad:</p>
@@ -30,7 +30,7 @@ const shoppinCard = ({
                 <p className="font-bold text-lg text-blue-200">{data.price}</p>
               </div>
             </div>
-            <div className=" flex justify-end item-center">
+            <div className="flex justify-end item-center">
               <div className="flex w-24">
                 <button
                   className="bg-blue-200 px-2 text-white rounded-3xl text-center"
@@ -39,19 +39,27 @@ const shoppinCard = ({
                   +
                 </button>
                 <p className="mx-2 font-bold border-2 border-gray-200 px-2">
-                  1
+                  {data.amount}
                 </p>
-                <button
-                  className="bg-blue-200 px-2 text-white rounded-3xl text-center"
-                  onClick={() => lessAProduct(index, data)}
-                >
-                  -
-                </button>
+                {data.amount === 1 ? (
+                  <button
+                    className="bg-gray-200 px-2 text-white rounded-3xl text-center"
+                  >
+                    -
+                  </button>
+                ) : (
+                  <button
+                    className="bg-blue-200 px-2 text-white rounded-3xl text-center"
+                    onClick={() => lessAProduct(data)}
+                  >
+                    -
+                  </button>
+                )}
               </div>
 
-              <button 
+              <button
                 className="text-red-500 ml-2"
-                onClick={() => deleteProduct(index)}
+                onClick={() => deleteProduct(data)}
               >
                 Borrar
               </button>
@@ -59,13 +67,6 @@ const shoppinCard = ({
           </div>
         </div>
       </div>
-
-      {/* <button
-        className="primary-button-full btnTransitionHover"
-        onClick={(e) => setProductsInShoppingCar(e, data)}
-      >
-        Agregar
-      </button> */}
     </div>
   );
 };

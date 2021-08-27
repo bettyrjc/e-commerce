@@ -39,7 +39,7 @@ const Home = ({ products, getProducts }) => {
 
   return (
     <Main shoppingCarInHeader={productsInCar}>
-      <div className="h-full sm:block md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-4 m-4 mx-8 ">
+      <div className="h-full grid sm:grid-cols-1  md:grid-cols-2 lg:grid lg:mb-0 lg:grid-cols-3 gap-4 m-4 mx-8 ">
         {productsList?.length > 0
           ? productsList.map((product, index) => (
               <Card
