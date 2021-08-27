@@ -11,7 +11,7 @@ const header = ({ shoppingCarInHeader = [] }) => {
       <Link href="/">
         <a className="text-3xl font-bold text-white">MERU</a>
       </Link>
-      <Link className="flex justify-between items-center w-24" href="/ShoppingCar">
+      <Link className="flex justify-between items-center w-24" href="/shoppingCar">
         <a className="w-14 h-14 hover:bg-blue-700 p-2 rounded-full cursor-pointer relative">
           <Image
             src={shoppingCar}
