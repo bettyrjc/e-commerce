@@ -54,11 +54,20 @@ const ShoppingCar = ({ pushInShoppingCar }) => {
     items?.length > 0 ? items.reduce((acum, i) => acum + i.amount, 0) : "0";
 
   const deleteProduct = async (index) => {
-    productInCar.splice(index, 1);
-    localStorage.setItem("productsInCar", JSON.stringify(productInCar));
-    pushInShoppingCar(productInCar);
-    toast.info(" 😩 Eliminando producto del  carrito");
-    window.location.reload();
+    MySwal.fire({
+      title: `Seguro quieres Eliminar este item?`,
+      text: "Esta acción es permanente",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Sí",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) productInCar.splice(index, 1);
+      localStorage.setItem("productsInCar", JSON.stringify(productInCar));
+      pushInShoppingCar(productInCar);
+      toast.info(" 😩 Eliminando producto del  carrito");
+      window.location.reload();
+    });
   };
   const clearShoppingCart = () => {
     MySwal.fire({
@@ -70,18 +79,20 @@ const ShoppingCar = ({ pushInShoppingCar }) => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) localStorage.clear();
-      window.location.reload()
+      window.location.reload();
     });
   };
 
   return (
     <Main>
-      <button
-        className="ml-4 bg-blue-200 p-2 rounded-lg text-white cursor-pointer mb-4 hover:bg-blue-700"
-        onClick={clearShoppingCart}
-      >
-        Limpiar carrito
-      </button>
+      {items?.length > 0 && (
+        <button
+          className="ml-4 bg-blue-200 p-2 rounded-lg text-white cursor-pointer mb-4 hover:bg-blue-700"
+          onClick={clearShoppingCart}
+        >
+          Limpiar carrito
+        </button>
+      )}
       <div className="flex m-4 items-start justify-between flex-col-reverse md:flex-row m-0">
         <div className="md:w-3/5 bg-gray-200 h-36 shadow-lg p-4 rounded-md overflow-auto w-full">
           <div className="flex justify-between item-center border-blue-500 border-b-2 p-6 ">
